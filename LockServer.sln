@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LockServer", "src\LockServer\LockServer.csproj", "{52680B8F-5D1F-45BE-878B-1E4A7EBA2831}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LockServer.Tests", "tests\LockServer.Tests\LockServer.Tests.csproj", "{391E3CF3-8AF3-414D-8DF1-6BA7DB35E954}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52680B8F-5D1F-45BE-878B-1E4A7EBA2831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52680B8F-5D1F-45BE-878B-1E4A7EBA2831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52680B8F-5D1F-45BE-878B-1E4A7EBA2831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52680B8F-5D1F-45BE-878B-1E4A7EBA2831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391E3CF3-8AF3-414D-8DF1-6BA7DB35E954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391E3CF3-8AF3-414D-8DF1-6BA7DB35E954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391E3CF3-8AF3-414D-8DF1-6BA7DB35E954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391E3CF3-8AF3-414D-8DF1-6BA7DB35E954}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFB0D21E-CA19-4C31-B57A-C4A8A26E5D9B}
+	EndGlobalSection
+EndGlobal
