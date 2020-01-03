@@ -40,7 +40,7 @@ namespace LockServer.Tests
             {
                 await using var _ = await LockServer.GetLock(i);
             }));
-            await Task.WhenAll(tasks.ToArray());
+            await Task.WhenAll(tasks);
         }
 
         [Benchmark]
@@ -50,7 +50,7 @@ namespace LockServer.Tests
             {
                 await using var _ = await LockServer.GetLock(0);
             }));
-            await Task.WhenAll(tasks.ToArray());
+            await Task.WhenAll(tasks);
         }
 
         [Benchmark]
@@ -60,9 +60,9 @@ namespace LockServer.Tests
             var tasks = Enumerable.Range(1, 1_00_000).Select(_ => Task.Run(async () =>
             {
                 var key = random.Next(1, 10); 
-                await using var _ = await LockServer.GetLock(0);
+                await using var _ = await LockServer.GetLock(key);
             }));
-            await Task.WhenAll(tasks.ToArray());
+            await Task.WhenAll(tasks);
         }
 
         [Benchmark]
@@ -72,9 +72,9 @@ namespace LockServer.Tests
             var tasks = Enumerable.Range(1, 1_00_000).Select(_ => Task.Run(async () =>
             {
                 var key = random.Next(1, 100);
-                await using var _ = await LockServer.GetLock(0);
+                await using var _ = await LockServer.GetLock(key);
             }));
-            await Task.WhenAll(tasks.ToArray());
+            await Task.WhenAll(tasks);
         }
 
         [Benchmark]
@@ -84,9 +84,9 @@ namespace LockServer.Tests
             var tasks = Enumerable.Range(1, 1_00_000).Select(_ => Task.Run(async () =>
             {
                 var key = random.Next(1, 1000);
-                await using var _ = await LockServer.GetLock(0);
+                await using var _ = await LockServer.GetLock(key);
             }));
-            await Task.WhenAll(tasks.ToArray());
+            await Task.WhenAll(tasks);
         }
 
         [Benchmark]
@@ -98,7 +98,7 @@ namespace LockServer.Tests
                 await semaphoreSlim.WaitAsync();
                 semaphoreSlim.Release();
             }));
-            await Task.WhenAll(tasks.ToArray());
+            await Task.WhenAll(tasks);
         }
     }
 }
