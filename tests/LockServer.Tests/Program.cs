@@ -18,21 +18,19 @@ namespace LockServer.Tests
 
         private static CancellationTokenSource Cts;
         private static LockServer<int> LockServer;
-        private static Task ServerTask;
 
         [GlobalSetup]
         public void Setup()
         {
             Cts = new CancellationTokenSource();
             LockServer = new LockServer<int>(Cts.Token);
-            ServerTask = LockServer.Start();
         }
 
         [GlobalCleanup]
         public async Task Clean()
         {
             Cts.Cancel();
-            await ServerTask;
+            await LockServer.Task;
         }
 
         [Benchmark]

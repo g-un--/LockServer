@@ -12,14 +12,18 @@ namespace LockServer
         private readonly CancellationToken _ct;
         private readonly Queue<Queue<TaskCompletionSource<IAsyncDisposable>>> _pool;
 
+        public Task Task { get; }
+
         public LockServer(CancellationToken ct)
         {
             _ct = ct;
-            _requests = Channel.CreateUnbounded<(T, TaskCompletionSource<IAsyncDisposable>)>();
+            var options = new UnboundedChannelOptions() { SingleReader = true, SingleWriter = false };
+            _requests = Channel.CreateUnbounded<(T, TaskCompletionSource<IAsyncDisposable>)>(options);
             _pool = new Queue<Queue<TaskCompletionSource<IAsyncDisposable>>>();
+            Task = Start();
         }
 
-        public async Task Start()
+        private async Task Start()
         {
             try
             {

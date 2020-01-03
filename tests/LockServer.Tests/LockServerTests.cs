@@ -12,7 +12,6 @@ namespace LockServer.Tests
         {
             var cts = new CancellationTokenSource();
             var server = new LockServer<string>(cts.Token);
-            var serverTask = server.Start();
 
             var concurrentCount = 0;
             async Task test() 
@@ -30,7 +29,7 @@ namespace LockServer.Tests
 
             concurrentCount.ShouldBe(0);
             cts.Cancel();
-            await serverTask;
+            await server.Task;
         }
 
         [Fact]
@@ -38,7 +37,6 @@ namespace LockServer.Tests
         {
             var cts = new CancellationTokenSource();
             var server = new LockServer<string>(cts.Token);
-            var serverTask = server.Start();
 
             var concurrentCount = 0;
             async Task test(string key)
@@ -55,7 +53,7 @@ namespace LockServer.Tests
 
             concurrentCount.ShouldBe(0);
             cts.Cancel();
-            await serverTask;
+            await server.Task;
         }
     }
 }
